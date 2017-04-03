@@ -1,10 +1,13 @@
-#include <types.h>
-#include <mem.h>
-#include <log.h>
+#include "types.h"
+#include "mem.h"
+#include "log.h"
+#include "stuff.h"
+
 #include <stdlib.h>
 #include <time.h>
-#include <stuff.h>
 
+#include <unistd.h>
+#include <linux/limits.h>
 
 static FILE* log_file=NULL;
 
@@ -12,15 +15,16 @@ static u32_t log_mask = LOG_DEFAULT;
 
 bool logInit(const char* file_name)
 {
-    char name[256];
+    char name[PATH_MAX];
     if(!log_file)
         logDone();
     if(file_name==NULL)
     {
-        strcpy(name,__argv[0]);
-        char* ptr=strrchr(name,'.');
-        if(ptr)
-            *ptr='\0';
+	if(readlink("/proc/self/exe", name, PATH_MAX) == -1) 
+		strcpy(name, "logfile");
+//        char* ptr=strrchr(name,'.');
+//        if(ptr)
+//            *ptr='\0';
         file_name=strcat(name,".log");
     }
     log_file=fopen(file_name,"wt");

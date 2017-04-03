@@ -1,0 +1,11 @@
+/*
+    MySTL iterator   
+*/
+
+#ifndef __MYSTL_ITERATOR__
+#define __MYSTL_ITERATOR__
+
+#include <stl/reverse_iterator.h>
+#include <stl/insert_iterators.h>
+
+#endif
