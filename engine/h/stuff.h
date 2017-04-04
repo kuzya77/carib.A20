@@ -49,18 +49,15 @@ size_t bnscanf(const void* p,size_t b_size,const char* format,...);
 //------------------------------------------------------
 // CRC32
 
-extern uint32 crc_32_table[];
-
-uint32 crc32(const void* data,size_t size,uint32 crc=0xFFFFFFFF);
-inline uint32 crc32(byte data,uint32 crc) { return crc_32_table[(crc^data)&0xff]^(crc>>8); }
+u32_t crc32(const void* data,size_t size,u32_t crc=0xFFFFFFFF);
+u32_t crc32(byte data, u32_t crc);
 
 //------------------------------------------------------
 // CRC16
 // Polynom X^16+X^12+X^5+1
-extern uint16 crc_16_table[];
 
-uint16 crc16(const void* data,size_t size,uint16 crc=0xFFFF);
-inline uint16 crc16(byte data,uint16 crc) { return crc_16_table[(crc^data)&0xff]^(crc>>8); }
+u16_t crc16(const void* data, size_t size, u16_t crc=0xFFFF);
+u16_t crc16(byte data, u16_t crc);
 
 // stuff
 #define random(x)   (rand()%x)
