@@ -4,13 +4,19 @@
 
 #include <SDL/SDL.h>
 
-#include "binfile.h"
+#include "picture.h"
 
 int main(int argc, char* argv[])
 {
 	logInit();	
 	logTitle("Carib has started");
 	bfInit();
+
+	IMAGE bg = imgLoad("mortal_kombat_001.jpg", BPP_32bit, IMG_SHARED);
+	if(bg==NULL)
+	{
+		logError("Can't load mortal_kombat_001.jpg");
+	}
 
 	if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)<0)
 	{
@@ -20,7 +26,7 @@ int main(int argc, char* argv[])
 	}
 	printf("Hello world!\n");
 
-	SDL_Surface* screen = SDL_SetVideoMode(800, 600, 32, SDL_SWSURFACE);
+	SDL_Surface* screen = SDL_SetVideoMode(1024, 768, 32, SDL_SWSURFACE);
 	if(screen==NULL)
 	{
 		logError("Couldn't set display mode: %s", SDL_GetError());
@@ -51,13 +57,16 @@ int main(int argc, char* argv[])
 
 		if(SDL_LockSurface(screen)>=0)
 		{
-			uint32* buffer = (uint32*)screen->pixels;
-			SDL_Rect rect = {400, 300, 200, 150};
-			for(int y=0; y<screen->h; y++)
-				for(int x=0; x<screen->w; x++)
-					*buffer++ = x*(y+i);
+			uint32* buffer = (uint32*)screen->pixels;			
+			if((i&32) && bg)
+				memcpy(buffer, imgBuffer(bg), screen->w*screen->h*4);
+			else
+				for(int y=0; y<screen->h; y++)
+				{
+					for(int x=0; x<screen->w; x++)
+						*buffer++ = x*(y+i);
+				}
 			SDL_UnlockSurface(screen);
-			SDL_FillRect(screen, &rect, 0x00FF0000);
 			SDL_Flip(screen);
 		}
 	}

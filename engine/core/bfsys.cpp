@@ -97,12 +97,12 @@ bool LocateInZip(bfPathInfo& pi,const char* name)
             IndexEntry value;
             value.crc=FileNameCrc(name);
 
-            pair<IndexEntry*,IndexEntry*> pr=equal_range(zi.begin(),zi.end(),value);            
+            std::pair<zipIndex::iterator,zipIndex::iterator> pr=std::equal_range(zi.begin(), zi.end(), value);
             if(pr.first!=pr.second)
             {
-                if(distance(pr.first,pr.second)>1)
+                if(std::distance(pr.first,pr.second)>1)
                     logWarning("LocateInZip: undetermined state for file \"%s\"(crc=%08X), count=%d",
-                                        name,value.crc,distance(pr.first,pr.second));
+                                        name,value.crc,std::distance(pr.first,pr.second));
                 unzGoToFilePos(pi.uf,&pr.first->pos);
                 return true;
             }
@@ -191,7 +191,7 @@ bool bfAddZip(BINFILE zipFile,const char* password)
     // Создаем фрагмент описания пути
     try
     {
-        bfSys.paths.push_front();
+        bfSys.paths.push_front(bfPathInfo());
         bfPathInfo& pi=bfSys.paths.front();
         pi.uf=uf;
         if(password)
@@ -250,7 +250,7 @@ bool bfAddPath(const char* name,const char* password)
         zipIndex* zi=NULL;
         try
         {
-            bfSys.paths.push_front();
+            bfSys.paths.push_front(bfPathInfo());
             bfPathInfo& pi=bfSys.paths.front();
             pi.name=name;
             if(password)
@@ -287,7 +287,7 @@ BINFILE bfOpen(const char* name,int mode)
     BinFile* bf=bfOpenSimple(name,mode);
     if(!bf && mode==OPEN_RO)        // Попытка не удалась, пробуем искать в архивах или каталогах
     {
-        for(list<bfPathInfo>::iterator pi=bfSys.paths.begin();pi!=bfSys.paths.end();pi++)
+        for(std::list<bfPathInfo>::iterator pi=bfSys.paths.begin();pi!=bfSys.paths.end();pi++)
             if(pi->uf)      // Ищем в zip'е
             {
                 if(LocateInZip(*pi,name))    // файл найден
@@ -321,7 +321,7 @@ BINFILE bfOpen(const char* name,int mode)
             }
             else
             {   // Добавляем путь
-                bf=bfOpenSimple(string(pi->name).append("/").append(name).c_str(),mode);
+                bf=bfOpenSimple(std::string(pi->name).append("/").append(name).c_str(),mode);
                 if(bf)
                     break;
             }

@@ -20,12 +20,4 @@ int GetShiftBit(u32_t bit);
 
 u32_t FileNameCrc(const char* s); // Вычисляет crc32 со следующими параметрами: '\' меняет на '/', маленькие буквы на большие
 
-// memory proxy functions
-
-void* 	int_memalloc(size_t size);
-void* 	int_memalloc(size_t size, size_t align);
-void  	int_free(void* ptr);
-size_t 	int_usable_size(void*);
-size_t 	int_memfootprint();
-
 #endif

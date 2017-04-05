@@ -1,2 +1,4 @@
 Requeres:
 	zlib (www.zlib.net)
+	freeimage(apt-get install libfreeimage-dev)
+

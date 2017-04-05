@@ -20,12 +20,12 @@ bool logInit(const char* file_name)
         logDone();
     if(file_name==NULL)
     {
-	if(readlink("/proc/self/exe", name, PATH_MAX) == -1) 
-		strcpy(name, "logfile");
-//        char* ptr=strrchr(name,'.');
-//        if(ptr)
-//            *ptr='\0';
-        file_name=strcat(name,".log");
+	ssize_t size = readlink("/proc/self/exe", name, PATH_MAX);
+	if(size!=-1)
+		strcpy(&name[size], ".log");
+	else
+		strcpy(name, "logfile.log");
+        file_name=name;
     }
     log_file=fopen(file_name,"wt");
     if(log_file)

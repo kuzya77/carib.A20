@@ -7,11 +7,13 @@
 #include "binfile.h"
 #include "stuff.h"
 
-#include <stl/string>
-#include <stl/list>
-#include <stl/vector>
+#include <string>
+#include <list>
+#include <vector>
 
 #include "istl.h"
+
+#include <stdexcept>
 
 #ifdef getc
   #undef getc
@@ -20,7 +22,7 @@
   #undef putc
 #endif
 
-class std_binfile_error: public runtime_error
+class std_binfile_error: public std::runtime_error
 {
 public:
     std_binfile_error(const char* msg):runtime_error(msg) {}
@@ -37,7 +39,7 @@ public:
         bool operator <  (const IndexEntry& ie) const { return crc<ie.crc; }
 };
 
-typedef vector<IndexEntry> zipIndex;
+typedef std::vector<IndexEntry> zipIndex;
 
 class BinFile;
 
@@ -47,8 +49,8 @@ class BinFile;
 class bfPathInfo
 {
 public:
-    string name;            // имя архива или каталога
-    string password;       
+    std::string name;            // имя архива или каталога
+    std::string password;       
     unzFile uf;             // ID открытого архива, для NIOSа - файл архива
     zipIndex*   zip_index;  // Индекс для ускорения поиска файла (если есть)
     bfPathInfo():zip_index(NULL) { uf=NULL; }
@@ -59,7 +61,7 @@ public:
 class bfSystem:public baseSystem<BinFile>
 {
 public:
-    list<bfPathInfo> paths;           // Ссылка на следующий путь
+    std::list<bfPathInfo> paths;           // Ссылка на следующий путь
     bfSystem()                       {}
     bool RegisterFile(BinFile* b);
 };
@@ -131,7 +133,7 @@ class stdBinFile: public BinFile
 {
 protected:
     FILE* f;
-    string fname;
+    std::string fname;
 public:
     stdBinFile(const char *name,int type);
     virtual ~stdBinFile();

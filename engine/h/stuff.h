@@ -4,8 +4,7 @@
 #include "types.h"
 #include "mem.h"
 
-#include <stl/algorithm>
-using namespace stl;
+#include <algorithm>
 
 // всякие полезности
 #define SAFE_DESTROY(fn,ptr)    { fn(ptr); ptr=NULL; }

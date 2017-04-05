@@ -23,7 +23,7 @@ void bfDone();
 
 bool bfAddPath(const char* name,const char* password=NULL);     
                                         // Добавляет указанный путь в пути поиска файла, добавляется в конец списка путей.
-bool bfAddZip(BINFILE zipFile,const char* password=NULL);       
+bool bfAddZip(BINFILE zipFile,const char* password=NULL);
                                         // механизм применения: если файл открывается в режиме на запись, пути игнорируются
                                         // Перебор начинается с первого каталога, простым добавлением пути к имени файла.
                                         // возможно применение .zip архивов в качестве пути.
