@@ -64,7 +64,7 @@ bool imgLoadPack(const char* name)
 
     u32_t id_crc=crc32(name,strlen(name));
 
-    std::pair<imgSystem::pack_map::iterator,imgSystem::pack_map::iterator> pr=imgSys->pmap.equal_range(id_crc);
+    auto pr=imgSys->pmap.equal_range(id_crc);
     if(pr.first!=pr.second)
     {
         logMessage("imgLoadPack(%s) already loaded. Skipped", name);
@@ -118,7 +118,7 @@ void imgReleasePack(const char* name)
 {
     logMessage("imgReleasePack(%s)", name);
     u32_t id_crc=crc32(name,strlen(name));
-    std::pair<imgSystem::pack_map::iterator,imgSystem::pack_map::iterator> pr=imgSys->pmap.equal_range(id_crc);
+    auto pr=imgSys->pmap.equal_range(id_crc);
     if(pr.first!=pr.second)
     {
         tImagePack* p=pr.first->second;

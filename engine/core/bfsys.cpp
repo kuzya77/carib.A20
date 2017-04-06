@@ -97,7 +97,7 @@ bool LocateInZip(bfPathInfo& pi,const char* name)
             IndexEntry value;
             value.crc=FileNameCrc(name);
 
-            std::pair<zipIndex::iterator,zipIndex::iterator> pr=std::equal_range(zi.begin(), zi.end(), value);
+            auto pr=std::equal_range(zi.begin(), zi.end(), value);
             if(pr.first!=pr.second)
             {
                 if(std::distance(pr.first,pr.second)>1)

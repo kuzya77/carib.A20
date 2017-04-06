@@ -2,9 +2,7 @@
 	Entry point of Caribean poker A20 app
 */
 
-#include <SDL/SDL.h>
-
-#include "picture.h"
+#include <gfx.h>
 
 int main(int argc, char* argv[])
 {
@@ -12,28 +10,21 @@ int main(int argc, char* argv[])
 	logTitle("Carib has started");
 	bfInit();
 
+	if(!gfxInit(1024, 768, 32))
+	{
+		SDL_Quit();
+		logDone();
+		return 1;
+	}
+
+
 	IMAGE bg = imgLoad("mortal_kombat_001.jpg", BPP_32bit, IMG_SHARED);
 	if(bg==NULL)
 	{
 		logError("Can't load mortal_kombat_001.jpg");
 	}
 
-	if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)<0)
-	{
-		logError("Can't initialize SDL: %s\n", SDL_GetError());
-		logDone();
-		exit(1);
-	}
-	printf("Hello world!\n");
-
-	SDL_Surface* screen = SDL_SetVideoMode(1024, 768, 32, SDL_SWSURFACE);
-	if(screen==NULL)
-	{
-		logError("Couldn't set display mode: %s", SDL_GetError());
-		SDL_Quit();
-		logDone();
-		exit(1);
-	}
+	SDL_Surface* screen = SDL_GetVideoSurface();
 
 	logMessage("Screen mode is %d x %d", screen->w, screen->h);
 
@@ -57,9 +48,9 @@ int main(int argc, char* argv[])
 
 		if(SDL_LockSurface(screen)>=0)
 		{
-			uint32* buffer = (uint32*)screen->pixels;			
+			uint32* buffer = (uint32*)screen->pixels;
 			if((i&32) && bg)
-				memcpy(buffer, imgBuffer(bg), screen->w*screen->h*4);
+				gfxPutImage(0,0, bg);
 			else
 				for(int y=0; y<screen->h; y++)
 				{
