@@ -8,8 +8,8 @@
 
 int halfWidth,halfHeight;
 
-int N1=5;
-int N2=40;
+int N1=20;
+int N2=20;
 
 typedef float 		    dType;
 typedef Vector3D<dType> dVector3D;
@@ -143,7 +143,7 @@ int main(int argc,char* argv[])
     logTitle("Lets torus demo begin!");
     try
     {
-         if(!gfxInit(1024, 768))
+         if(!gfxInit(800, 600))
 	{
              return -1;
 	}
@@ -196,6 +196,7 @@ int main(int argc,char* argv[])
              sprintf(s,"N1=%d,N2=%d FPS=%0.3f",N1,N2,float(i)*1e3/float(MilliSecs()-t0));
              gfxOutText(0,0,s,0xFFFFFF);
              gfxFlip();
+             SDL_Delay(10);
          }
     }
     catch(std::bad_alloc&)

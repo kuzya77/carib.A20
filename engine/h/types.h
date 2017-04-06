@@ -20,9 +20,6 @@ typedef unsigned long long  uint64;
 #define LOBYTE(w)           ((u8_t)(w))
 #define HIBYTE(w)           ((u8_t)(((u16_t)(w) >> 8) & 0xFF))
 
-inline void memsetw(uint16* ptr,uint16 data,int count)  { for(;count--;*ptr++=data); }
-inline void memsetd(uint32* ptr,uint32 data,int count)  { for(;count--;*ptr++=data); }
-
 #define lobyte(w) LOBYTE(w)
 #define hibyte(w) HIBYTE(w)
 #define loword(l) LOWORD(l)
