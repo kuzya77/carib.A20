@@ -59,8 +59,8 @@ void    gfxPutImageA(int x,int y,IMAGE image,u32_t alpha,const cRect* rect=NULL)
 void gfxPutPalette(int index, int count, const RGBQUAD* palette);
 void gfxGetPalette(int index, int count, RGBQUAD* palette);
 
-inline void gfxPutPalette(const RGBQUAD* palette)   { gfxPutPalette(0,256,palette); }
-inline void gfxGetPalette(RGBQUAD* palette)         { gfxGetPalette(0,256,palette); }
+inline void gfxPutPalette(const RGBQUAD* palette)   { gfxPutPalette(0, 256, palette); }
+inline void gfxGetPalette(RGBQUAD* palette)         { gfxGetPalette(0, 256, palette); }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Поддержка платформ

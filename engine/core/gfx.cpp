@@ -303,6 +303,42 @@ void gfxFlip()
     		gfxSys.screen2->flip();		
 }
 
+void gfxPutImageA(int x,int y, IMAGE image, const cRect* rect)    // Вывод с alpha
+{
+    if(gfxSys.CurrentScreen && image)
+        gfxSys.CurrentScreen->PutImageA(x, y, image, rect);
+}
+
+void gfxPutImageA(int x,int y,IMAGE image, u32_t alpha,const cRect* rect)   // Вывод с alpha
+{
+    if(gfxSys.CurrentScreen && image && alpha)
+    {
+        if(alpha==256)
+            gfxSys.CurrentScreen->PutImageA(x, y, image, rect);
+        else
+            gfxSys.CurrentScreen->PutImageA(x, y, image, alpha, rect);
+    }
+}
+
+// Работа с палитрой (если таковая есть :)
+void gfxPutPalette(int index, int count, const RGBQUAD* palette)
+{
+    if(index>=0 && index<256 && palette && count>0 && gfxSys.CurrentScreen && gfxSys.CurrentScreen->bpp()==8)
+    {
+        LowTo(count,256-index);
+		// Not implemented yet
+    }
+}
+
+void gfxGetPalette(int index, int count, RGBQUAD* palette)
+{
+    if(index>=0 && index<256 && palette && count>0 && gfxSys.CurrentScreen && gfxSys.CurrentScreen->bpp()==8)
+    {
+        LowTo(count,256-index);
+        // Not implemented yet
+    }
+}
+
     
 #if 0
 
@@ -377,26 +413,5 @@ bool gfxSetBuffer(IMAGE image)      // NULL - вывод на экран
         gfxSys.CurrentScreen=gfxBackBuffer()?gfxSys.BackBuffer:gfxSys.MainBuffer;
     return true;
 }
-
-#ifndef __NIOS_ALTERA__
-
-void gfxPutImageA(int x,int y,IMAGE image,const cRect* rect)    // Вывод с alpha
-{
-    if(gfxSys.CurrentScreen && image)
-        gfxSys.CurrentScreen->PutImageA(x, y, image, rect);
-}
-
-void gfxPutImageA(int x,int y,IMAGE image,u32_t alpha,const cRect* rect)   // Вывод с alpha
-{
-    if(gfxSys.CurrentScreen && image && alpha)
-    {
-        if(alpha==256)
-            gfxSys.CurrentScreen->PutImageA(x, y, image, rect);
-        else
-            gfxSys.CurrentScreen->PutImageA(x, y, image, alpha, rect);
-    }
-}
-
-#endif
 
 #endif

@@ -1,0 +1,36 @@
+fps		30
+zcolor	1
+mask 	'move/2_%d.png'
+pos
+(
+     362	0
+     359	28
+     353	109
+     344	181
+     336	267
+     338	241
+     337	245
+     335	259
+     334	299
+     334	299
+)
+
+Event
+{
+	frame 0
+	cmds 
+	(  
+		"AnimHide card_s2" 
+		"AnimHide hold2"
+	)
+}
+
+Event
+{
+	frame 9
+	cmds 
+	(  
+		"AnimHide move2" 
+		"FlyDone 2"
+	)
+}

@@ -231,9 +231,6 @@ void Screen::_PutImage(int x,int y,const tPicture* image,const cRect* rect)
         case BPP_16bit:
             bpp=2;
             break;
-        case BPP_24bit:
-            bpp=3;
-            break;
         case BPP_32bit:
             bpp=4;
             break;
@@ -304,19 +301,6 @@ void Screen::_GetImage(int x,int y,int w,int h,tPicture* image,const cRect* rect
                 u16_t* d=(u16_t*)data;
                 for(int j=stx;j<w;j++)
                     d[j]=_GetPixel(x+j,y);
-            }
-            break;
-        case BPP_24bit:
-            for(i=0;i<h;i++,y++,data+=LineW)
-            {
-                RGBStruct* d=(RGBStruct*)data;
-                for(int j=stx;j<w;j++)
-                {
-                    u32_t l=_GetPixel(x+j,y);
-                    d[j].red=HIWORD(l);
-                    d[j].green=HIBYTE(l);
-                    d[j].blue=LOBYTE(l);
-                }
             }
             break;
         case BPP_32bit:

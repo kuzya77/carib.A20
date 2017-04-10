@@ -1,0 +1,34 @@
+fps 	30
+zcolor	1
+mask 	'move/0_%d.png'
+pos
+(
+     322	0
+     263	23
+     197	89
+     116	151
+     10		208
+     29		194
+     52		198
+     52		198
+)
+
+Event
+{
+	frame 0
+	cmds 
+	(  
+		"AnimHide card_s0" 
+		"AnimHide hold0"
+	)
+}
+
+Event
+{
+	frame 7
+	cmds 
+	(  
+		"AnimHide move0" 
+		"FlyDone 0"
+	)
+}

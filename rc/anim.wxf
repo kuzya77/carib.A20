@@ -1,0 +1,226 @@
+animscene "main"
+{
+	bkground "sm_light/00.bmp"
+
+	font "default"
+	{
+		default_width 14
+		image "font_l.png"
+		symbols "0123456789"
+		offsets ( 0 14 28 42 56 70 84 98 112 126 )
+	}
+
+	animation "bkground"
+	{
+		layer 50
+		loop  1
+		imagelist "sm_light/list.wxf"
+	}
+	
+	animation "wave1"
+	{
+		layer 100
+		loop  1
+		imagelist "wavemsg/wave_h1/list.wxf"
+	}
+	animation "wave2"
+	{
+		layer 100
+		loop  1
+		imagelist "wavemsg/wave_h2/list.wxf"
+	}
+	animation "wave3"
+	{
+		layer 100
+		loop  1
+		imagelist "wavemsg/wave_h3/list.wxf"
+	}
+
+	animation "antemove"
+	{
+		layer 100
+		imagelist "ch_ant_s/list.wxf"
+    }
+
+	animation "betmove"
+	{
+		layer 2000
+		imagelist "ch_bet_s/list.wxf"
+    }
+
+	animation "win_show"
+	{
+		layer 4000
+		imagelist "ch_betgr/show.wxf"
+    }
+
+	animation "win_hide"
+	{
+		layer 4000
+		imagelist "ch_betgr/hide.wxf"
+    }
+
+    animation "ante2"
+    {
+    	layer 100
+    	pos ( 361 468)
+    	imagelist "ante1/ante2.wxf"
+    }
+
+    animation "ante5"
+    {
+    	layer 100
+    	pos ( 361 468)
+    	imagelist "ante1/ante5.wxf"
+    }
+
+    animation "ante10"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante10.wxf"
+    }
+
+    animation "ante20"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante20.wxf"
+    }
+
+    animation "ante30"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante30.wxf"
+    }
+
+    animation "ante50"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante50.wxf"
+    }
+
+    animation "ante70"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante70.wxf"
+    }
+
+    animation "ante100"
+    {
+    	layer 100
+    	pos ( 361 468)
+   		imagelist "ante1/ante100.wxf"
+    }
+
+// static cards
+    animation "card_s0"
+    {
+    	layer 1000
+    	imagelist "cards/list0.wxf"
+    }
+    animation "card_s1"
+    {
+    	layer 1000
+    	imagelist "cards/list1.wxf"
+    }
+    animation "card_s2"
+    {
+    	layer 1000
+    	imagelist "cards/list2.wxf"
+    }
+    animation "card_s3"
+    {
+    	layer 1000
+    	imagelist "cards/list3.wxf"
+    }
+    animation "card_s4"
+    {
+    	layer 1000
+    	imagelist "cards/list4.wxf"
+    }
+
+    animation "hold0"
+    {
+    	layer 1100
+    	imagelist "hold/list0.wxf"
+    }
+    animation "hold1"
+    {
+    	layer 1100
+    	imagelist "hold/list1.wxf"
+    }
+    animation "hold2"
+    {
+    	layer 1100
+    	imagelist "hold/list2.wxf"
+    }
+    animation "hold3"
+    {
+    	layer 1100
+    	imagelist "hold/list3.wxf"
+    }
+    animation "hold4"
+    {
+    	layer 1100
+    	imagelist "hold/list4.wxf"
+    }
+
+	animation "move0"
+    {
+    	layer 1200
+    	imagelist "move/list0.wxf"
+    }
+    animation "move1"
+    {
+    	layer 1200
+    	imagelist "move/list1.wxf"
+    }
+    animation "move2"
+    {
+    	layer 1200
+    	imagelist "move/list2.wxf"
+    }
+    animation "move3"
+    {
+    	layer 1200
+    	imagelist "move/list3.wxf"
+    }
+    animation "move4"
+    {
+    	layer 1200
+    	imagelist "move/list4.wxf"
+    }
+// indicators ------------------------------------
+
+   	indicator "credit"
+	{
+		layer 2000
+		font "default"
+		pos ( 160 500 )
+	}
+
+   	indicator "win"
+	{
+		layer 2000
+		font "default"
+		pos ( 160 530 )
+	}
+
+   	indicator "lastwin"
+	{
+		layer 2000
+		font "default"
+		pos ( 630 500 )
+	}
+
+   	indicator "paid"
+	{
+		layer 2000
+		font "default"
+		pos ( 630 530 )
+	}
+}

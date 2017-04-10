@@ -1,0 +1,13 @@
+fps 50
+
+mask "ante1/%03d.bmp"
+{
+      first 1
+      count 25
+}
+
+Event
+{
+	frame 0
+	cmds ("AnimHide ante2" "AnimHide ante10" "AnimHide ante20" "AnimHide ante30" "AnimHide ante50" "AnimHide ante70" "AnimHide ante100")
+}

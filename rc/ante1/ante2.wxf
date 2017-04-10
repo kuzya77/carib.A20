@@ -1,0 +1,18 @@
+fps 50
+
+path "ante1/"
+
+files
+(
+	"176.bmp" "177.bmp" "178.bmp" "179.bmp" "180.bmp"
+	"181.bmp" "182.bmp" "183.bmp" "184.bmp" "185.bmp"
+	"186.bmp" "187.bmp" "188.bmp" "189.bmp" "190.bmp"
+	"191.bmp" "192.bmp" "193.bmp" "194.bmp" "195.bmp"
+	"196.bmp" "197.bmp" "198.bmp" "199.bmp" "000.bmp"
+)
+
+Event
+{
+	frame 0
+	cmds (  "AnimHide ante5" "AnimHide ante10" "AnimHide ante20" "AnimHide ante30" "AnimHide ante50" "AnimHide ante70" "AnimHide ante100" )
+}

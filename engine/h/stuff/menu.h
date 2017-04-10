@@ -41,7 +41,7 @@ void uiVPrintf (Console*, color_t color,const char* message,va_list);
 void uiVPrintf (Console*,const char* message,va_list);
 
 void uiSeek (Console*,int top_line);
-uint uiTell (Console*); //return top line number
+int  uiTell (Console*); //return top line number
 
 /*
     Menu  

@@ -1,0 +1,34 @@
+fps		30
+zcolor	1
+mask 	'move/3_%d.png'
+pos
+(
+     366	0
+     378	25
+     402	99
+     427	167
+     459	233
+     474	221
+     502	219
+     502	219
+)
+
+Event
+{
+	frame 0
+	cmds 
+	(  
+		"AnimHide card_s3" 
+		"AnimHide hold3"
+	)
+}
+
+Event
+{
+	frame 7
+	cmds 
+	(  
+		"AnimHide move3" 
+		"FlyDone 3"
+	)
+}

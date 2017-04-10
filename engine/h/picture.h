@@ -16,9 +16,7 @@ typedef u32_t 		color_t;
 enum
 { 
     BPP_DEFAULT=0,
-    STD_COLOR=8,
     BPP_8bit=8,
-    HI_COLOR=16,
     BPP_15bit=15,
     BPP_16bit=16,
     BPP_24bit=24,
@@ -42,29 +40,12 @@ enum
 
 #pragma pack(1)
 
-/*
-Defined in FreeImage.h
-typedef struct 
-{
-  u8_t    rgbBlue; 
-  u8_t    rgbGreen; 
-  u8_t    rgbRed; 
-  u8_t    rgbReserved; 
-} RGBQUAD; 
-*/
 typedef union _COLOR32
 {
     color_t all;
     RGBQUAD rgb;
     u8_t    r[4];
 } COLOR32;
-
-typedef struct
-{
-    u8_t blue, 
-         green, 
-         red;
-} RGBStruct;
 
 #pragma pack()
 

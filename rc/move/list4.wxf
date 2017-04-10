@@ -1,0 +1,34 @@
+fps		30
+zcolor	1
+mask 'move/4_%d.png'
+pos
+(
+     370	0
+     394	20
+     440	87
+     492	148
+     556	207
+     575	194
+     596	198
+     596	198
+)
+
+Event
+{
+	frame 0
+	cmds 
+	(  
+		"AnimHide card_s4" 
+		"AnimHide hold4"
+	)
+}
+
+Event
+{
+	frame 7
+	cmds 
+	(  
+		"AnimHide move4" 
+		"FlyDone 4"
+	)
+}

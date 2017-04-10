@@ -113,13 +113,14 @@ IMAGE imgLoad(const char* fname,int pf,int flags)
     if(!fname || !imgInit())  // no image - no load
         return NULL;
     tPicture* p=NULL;
+
     try
     {
         u32_t id_crc=FileNameCrc(fname);
         if(flags&IMG_SHARED)    // search image...
         {
             // Начинаем искать...
-            for(std::pair<imgSystem::iterator,imgSystem::iterator> pr=imgSys->imap.equal_range(id_crc);pr.first!=pr.second;pr.first++)
+            for(auto pr=imgSys->imap.equal_range(id_crc);pr.first!=pr.second;pr.first++)
                 if(pr.first->second->bpp==pf || pf==BPP_DEFAULT) // нашли, все ок, возвращаем расшаренную копию
                 {
      //              debug("picture::imgLoad(fname=\""<<fname<<"("<<(void*)id_crc<<")) shared from "<<p->owner<<"\n");
@@ -136,6 +137,10 @@ IMAGE imgLoad(const char* fname,int pf,int flags)
         std::vector<byte> file_data(bfSize(f));
         bfRead(f, &file_data[0], bfSize(f));
         bfClose(f);
+
+        // Do not cut off palette if we need convert picture
+	    if(pf>BPP_8bit)
+    		flags &=~IMG_NOPALETTE;
 
         FIMEMORY *hmem = FreeImage_OpenMemory(&file_data[0], file_data.size());
         if(!hmem)
