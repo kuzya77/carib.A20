@@ -1,0 +1,187 @@
+fps 50
+zcolor 1
+mask 'turn/%04d.png'
+pos
+(
+		277	208
+		287	209
+		302	210
+		317	212
+		333	209
+		349	196
+		365	185
+		6	175
+		395	170
+		408	172
+		104	182
+		422	199
+		425	213
+		425	213
+		423	212
+		421	212
+		421	212
+		427	212
+		432	211
+		428	207
+		423	200
+		414	190
+		395	186
+		372	190
+		355	206
+		340	210
+		6	210
+		315	209
+		305	209
+		298	209
+		289	208
+		279	208
+		282	208
+		283	208
+		288	208
+		127	208
+		278	199
+		265	178
+		241	163
+		214	164
+		195	185
+		180	206
+		170	206
+		166	206
+		140	205
+		158	205
+		136	205
+		142	204
+		133	204
+		119	204
+		101	194
+		79	154
+		50	129
+		14	126
+		0	137
+		0	167
+		0	196
+		0	202
+		0	202
+		0	202
+		0	202
+		0	202
+		0	202
+		0	202
+		0	202
+		0	196
+		3	172
+		12	154
+		13	151
+		5	159
+		43	175
+		75	177
+		111	174
+		143	173
+		171	173
+		196	175
+		218	180
+		240	190
+		258	203
+		266	207
+		272	207
+		277	207
+		275	208
+)
+
+Event
+{
+	frame 0
+	cmds 
+	( 
+		"AnimHide card0"
+		"AnimHide card1"
+		"AnimHide card2"
+		"AnimHide card3"
+		"AnimShow card0 53"
+		"AnimShow card1 53"
+		"AnimShow card2 53"
+		"AnimShow card3 53"
+	)
+}
+
+Event
+{
+	frame 15
+	cmds ( "sndPlay card_h"	)
+}
+
+Event
+{
+	frame 17
+	cmds ( "AnimHide card3" )
+}
+
+Event
+{
+	frame 25
+	cmds ( "gamebTrickDone" )
+}
+
+Event
+{
+	frame 30
+	cmds ( "sndPlay card_h"	)
+}
+
+Event
+{
+	frame 33
+	cmds ( "AnimHide card2" )
+}
+
+Event
+{
+	frame 42
+	cmds ( "gamebTrickDone" )
+}
+
+Event
+{
+	frame 45
+	cmds ( "sndPlay card_h"	)
+}
+
+Event
+{
+	frame 47
+	cmds ( "AnimHide card1" )
+}
+
+Event
+{
+	frame 56
+	cmds ( "gamebTrickDone" )
+}
+
+Event
+{
+	frame 60
+	cmds ( "sndPlay card_h"	)
+}
+
+Event
+{
+	frame 62
+	cmds ( "AnimHide card0" )
+}
+
+Event
+{
+	frame 70
+	cmds ( "gamebTrickDone" )
+}
+
+Event
+{
+	frame 82
+	cmds 
+	(
+		"AnimHide turn"
+		"gamebTrickDone"
+	)
+}

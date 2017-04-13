@@ -1,0 +1,37 @@
+fps     50
+zcolor  1
+mask 'drop/in_c/%04d.png'
+pos
+(
+		277	208
+		272	212
+		270	213
+		266	210
+		264	207
+		264	206
+		264	206
+		264	206
+		265	208
+		266	209
+		268	212
+		267	215
+		270	218
+		273	222
+		275	226
+)
+
+Event
+{
+	frame 0
+	cmds ("AnimHide dmp")
+}
+
+Event
+{
+	frame 14
+	cmds 
+	(
+		"AnimHide drop_in_c"
+		"gamebTrickDone"
+	)
+}

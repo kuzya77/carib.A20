@@ -2,8 +2,13 @@
 #define __CARIB_H__
 
 #include <gfx.h>
+#include <sound.h>
 #include <stuff/menu.h>
 #include <stuff/anim.h>
+
+#include "h_math.h"
+
+#define CLEAR(x) memset(x,0,sizeof(x))
 
 const char CaribVersionStr[]="CPoker2 ver. 1.50 A20";
 
@@ -26,7 +31,6 @@ void print(color_t color, const char* format, ... );
 typedef struct
 {
     int     game;           // 1 - 1я раздача, 2- 2я, и т.д. 0- начало игры или вне игры (paid==0)
-   	uint32  lights;
     int32   credit;
    	int32   win;            
     int32   LastWin;
@@ -60,7 +64,7 @@ struct NetworkMsgTState:NetworkMsgBase
 // NCMD_TERMINAL_KEY
 struct NetworkMsgTKey:NetworkMsgBase
 {
-    uint32  key;    // key data for NCMD_TERMINAL_KEY
+    SDLKey  key;    // key data for NCMD_TERMINAL_KEY
 };
 
 // NCMD_TERMINAL_KEY
@@ -77,5 +81,35 @@ typedef union _NetworkMsg
     NetworkMsgTKey      key;
     NetworkMsgTMoney    money;
 } NetworkMsg;
+
+struct TurnMoney
+{
+        uint32  money_in,
+                money_out,
+                turn_in,
+                turn_out;
+        void reset()            { money_in=money_out=turn_in=turn_out=0; }
+};
+
+struct HeadStateWord
+{
+        uint32 procent;                                         // Процент выигрыша
+
+        int     state;                                                  // Head state
+        int32   cards[5];                                       // 0 - карты нет, 1-52 карты, 53 - джокер, 54 - рубашка, +100 - hold    
+        TerminalState console[TERMINAL_COUNT];
+
+        TurnMoney mLocal,mTotal;
+        TurnMoney cMoney[TERMINAL_COUNT],cMoneyTotal[TERMINAL_COUNT];   // Разнесенные данные по терминалам
+
+//-------------------------------------------------------------------
+// Settings     hardware        
+    int SndVol;                                                     // Громкость звуков при воспроизведении, 0-100
+//-------------------------------------------------------------------           
+
+    MathStorage math;       // MATH DATA
+};
+
+extern HeadStateWord hsw;
 
 #endif

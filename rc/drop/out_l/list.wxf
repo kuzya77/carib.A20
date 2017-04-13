@@ -1,0 +1,29 @@
+fps             50
+mask    'drop/out_l/%04d.png'
+zcolor  1
+pos
+(
+		203	223
+		211	223
+		219	222
+		229	222
+		239	222
+		249	221
+		253	216
+		256	211
+		260	207
+		263	206
+		266	205
+		270	205
+		274	205
+		277	207
+)
+Event
+{
+	frame 13
+	cmds 
+	(
+		"AnimHide drop_out_l"
+		"gamebTrickDone"
+	)
+}

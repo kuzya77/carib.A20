@@ -4,9 +4,13 @@
 
 #include "carib.h"
 #include "terminal.h"
+#include "head.h"
+
+HeadStateWord hsw;
 
 bool Init()
 {
+	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, 50);
 	bfAddPath("rc");
 	intro = imgLoad("intro.jpg", gfxBpp(), IMG_SHARED);
 	conInit(gfxWidth()/GFX_FONT_WIDTH,gfxHeight()/GFX_FONT_HEIGHT);
@@ -29,7 +33,23 @@ bool Init()
     	return false;
     }
 
-	return Terminal::Init();
+    print(WHITE, "cmdSound...");
+    if(cmdSoundInit("sound.wxf"))
+    	print(GREEN, "Ok\n");
+    else
+    {
+    	print(RED, ". Failed\n");
+    	return false;
+    }
+
+	return Terminal::Init() && Head::Init();
+}
+
+void Done()
+{
+    Head::BlackBoxWriteState();
+	NULL_DESTROY(imgFree,intro);
+	cmdSoundDone();
 }
 
 int main(int argc, char* argv[])
@@ -44,9 +64,13 @@ int main(int argc, char* argv[])
 		logDone();
 		return 1;
 	}
-	
+
+	sndInit();
+
 	// init 2nd screen (or head)
 	gfxOpen2nd("/dev/fb1");
+	animInit();
+
 	Init();
 
 	// Start terminal part
@@ -65,52 +89,8 @@ int main(int argc, char* argv[])
 		{
 			if(event.type & SDL_KEYUP)
 			{
-				printf("key up[0x%x](%x): '%c'\n", event.key.keysym.scancode, event.key.keysym.mod, event.key.keysym.unicode);
 				if(event.key.keysym.sym==SDLK_ESCAPE)
 					done = true;
-				switch(event.key.keysym.sym)
-				{
-					case SDLK_1:
-					{	// probe
-						NetworkMsg msg;
-						msg.state.from = 0;
-						msg.state.to = 2;
-						msg.state.cmd = NCMD_T_UPDATE_STATE;
-						msg.state.tstate.game = 1;           // 1 - 1я раздача, 2- 2я, и т.д. 0- начало игры или вне игры (paid==0)
-						msg.state.tstate.credit = 15;
-						msg.state.tstate.win = 17;
-    					msg.state.tstate.LastWin = 42;
-   						msg.state.tstate.paid = 24;
-    					msg.state.tstate.ante = 50;           // текущее значение ставки
-   						msg.state.tstate.cards[0] = 1;       // 0 - карты нет, 1-52 карты, 53 - джокер, 54 - рубашка, +100 - hold
-   						msg.state.tstate.cards[1] = 101;
-   						msg.state.tstate.cards[2] = 53;
-   						msg.state.tstate.cards[3] = 54;
-   						msg.state.tstate.cards[4] = 153;
-   						Terminal::send(msg);
-						break;
-					}
-					case SDLK_2:
-					{	// probe
-						NetworkMsg msg;
-						msg.state.from = 0;
-						msg.state.to = 2;
-						msg.state.cmd = NCMD_T_UPDATE_STATE;
-						msg.state.tstate.game = 2;           // 1 - 1я раздача, 2- 2я, и т.д. 0- начало игры или вне игры (paid==0)
-						msg.state.tstate.credit = 15;
-						msg.state.tstate.win = 17;
-    					msg.state.tstate.LastWin = 42;
-   						msg.state.tstate.paid = 24;
-    					msg.state.tstate.ante = 100;           // текущее значение ставки
-   						msg.state.tstate.cards[0] = 1;       // 0 - карты нет, 1-52 карты, 53 - джокер, 54 - рубашка, +100 - hold
-   						msg.state.tstate.cards[1] = 101;
-   						msg.state.tstate.cards[2] = 54;
-   						msg.state.tstate.cards[3] = 53;
-   						msg.state.tstate.cards[4] = 153;
-   						Terminal::send(msg);
-						break;
-					}
-				}
 				Terminal::keyPress(event.key.keysym.sym);
 			}
 		}
@@ -118,12 +98,19 @@ int main(int argc, char* argv[])
 		// Terminal process:
 		//gfxSet2ndScreen(false);
 		Terminal::process();
+		Head::process();
 		animProcess();
         animDraw();
         gfxFlip();
-        SDL_Delay(10);
+        gfxSet2ndScreen(true);
+        gfxFlip();
+        gfxSet2ndScreen(false);
+//        SDL_Delay(10);
 	}
 
+	Done();
+	animDone();
+	sndDone();
 	gfxDone();
 	bfDone();
 	logTitle("end");

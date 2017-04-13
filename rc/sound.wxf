@@ -1,0 +1,9 @@
+sound "betplease" 	{ file "wav/bpl.wav" }
+sound "card" 		{ file "wav/card.wav" }
+sound "card_h" 		{ file "wav/card_h.wav" }
+sound "hide" 		{ file "wav/hide.wav" }
+sound "hold" 		{ file "wav/hold.wav" }
+sound "set" 		{ file "wav/set.wav" }
+sound "shuff1" 		{ file "wav/shuff1.wav" }
+sound "shuff2" 		{ file "wav/shuff2.wav" }
+sound "unhold" 		{ file "wav/unhold.wav" }

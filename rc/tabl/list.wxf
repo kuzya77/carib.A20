@@ -1,0 +1,5 @@
+fps 0
+mask	"tabl/%02d.bmp"
+{
+	count 11
+}

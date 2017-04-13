@@ -5,6 +5,8 @@
 
 namespace Terminal
 {
+	extern int TerminalID;
+
 	bool Init();
 	void Done();
 

@@ -55,15 +55,15 @@ void Animation::EventProcess(int maxFrame)
     int i=currentEvent;
     for(;currentEvent<(int)ev.size() && ev[currentEvent].frame<=maxFrame;currentEvent++);
 
-//    logDebug("Animation(\"%s\") events[%d,%d], Frame=%d",name(),i,currentEvent-1,maxFrame);
-
     for(int i_end=currentEvent;i<i_end;i++) // выполняем все до текущего кадра включительно
         ev[i].exec();    
 }
 
 void Animation::draw()
 {
+	gfxSet2ndScreen(secondScreen);	
     ilist->draw(pos.x,pos.y,currentFrame);
+    gfxSet2ndScreen(false);
 }
 
 bool Animation::process(u32_t t) // пересчет анимации, параметр - текущее время
@@ -111,6 +111,8 @@ void Animation::reset()
 Animation::Animation(ParseNode* node):AnimLayer(node),ilist(NULL)
 {
     IsLoop=attri(node,"loop",0);
+
+    secondScreen = attri(node, "second", 0);
 
     const AttrList& p=attrlist(node,"pos");
 

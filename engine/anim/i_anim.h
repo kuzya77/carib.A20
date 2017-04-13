@@ -13,6 +13,7 @@ protected:
     ImageList* ilist;
 
     bool IsLoop;
+    bool secondScreen;	// uses second screen
 
     int currentFrame,
         currentLongFrame;   // номер текущего кадра

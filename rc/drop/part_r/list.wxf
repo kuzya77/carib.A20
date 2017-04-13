@@ -1,0 +1,38 @@
+fps             50
+mask    'drop/part_r/%04d.png'
+zcolor  1
+pos
+(
+		326	230
+		331	231
+		334	229
+		335	228
+		333	229
+		331	228
+		327	227
+		325	227
+		325	227
+		324	227
+		325	228
+		324	228
+		325	229
+		325	230
+		326	231
+		327	231
+)
+
+Event
+{
+	frame 0
+	cmds ("sndPlay card")
+}
+
+Event
+{
+	frame 15
+	cmds 
+	(
+		"AnimHide drop_part_r"
+		"gamebTrickDone"
+	)
+}

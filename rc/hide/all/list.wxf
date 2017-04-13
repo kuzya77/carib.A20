@@ -1,0 +1,138 @@
+fps		100
+zcolor	1
+mask    "hide/all/%04d.png"
+pos
+(
+		277	208
+		267	208
+		259	209
+		250	211
+		240	212
+		230	214
+		219	215
+		208	216
+		198	218
+		188	217
+		177	216
+		166	216
+		155	218
+		133	221
+		107	225
+		70	226
+		36	226
+		12	226
+		0	227
+		0	227
+		0	227
+		0	226
+		0	226
+		0	226
+		0	225
+		0	225
+		0	224
+		0	223
+		0	222
+		40	221
+		98	220
+		155	220
+		207	219
+		253	218
+		296	217
+		336	217
+		372	216
+		396	215
+		404	215
+		413	215
+		423	214
+		432	214
+		441	213
+		448	213
+		454	213
+		456	212
+		456	212
+		455	212
+		454	212
+		453	211
+		453	211
+		452	211
+		451	211
+		448	211
+		443	210
+		438	210
+		433	210
+		427	210
+		422	210
+		409	209
+		394	209
+		379	209
+		364	209
+		350	208
+		336	208
+		322	208
+		309	208
+		297	208
+		286	208
+		280	208
+		276	208
+)
+
+Event
+{
+	frame 0
+	cmds 
+	( 
+		"AnimHide pointer0"
+		"AnimHide pointer1" 
+		"AnimHide pointer2" 
+		"AnimHide pointer3" 
+		"AnimHide pointer4" 
+		"AnimHide hide0"
+		"AnimHide hide1" 
+		"AnimHide hide2" 
+		"AnimHide hide3" 
+		"AnimHide hide4" 
+		"AnimHide dmp"
+	)
+}
+
+Event
+{
+	frame 28
+	cmds ( "AnimHide card0" )
+}
+
+Event
+{
+	frame 31
+	cmds ( "AnimHide card1" )
+}
+
+Event
+{
+	frame 34
+	cmds ( "AnimHide card2" )
+}
+
+Event
+{
+	frame 38
+	cmds ( "AnimHide card3" )
+}
+
+Event
+{
+	frame 42
+	cmds ( "AnimHide card4" )
+}
+
+Event
+{
+	frame 70
+	cmds 
+	(		
+		"AnimHide hide_all"
+		"AnimHide combolist"
+		"sndPlay betplease"
+		"gamebTrickDone"
+	)
+}

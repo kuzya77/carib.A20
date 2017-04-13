@@ -12,7 +12,7 @@ namespace Terminal
 
 	int TerminalID=2;
 
-	TerminalState tms={0,0,0,0,0,0,0,0,0,0,0,0};
+	TerminalState tms={0,0,0,0,0,0,0,0,0,0,0};
 
 	const char* movecards[5] = 	{ "move0", "move1", "move2", "move3", "move4" };
 	const char* holds[5] = 		{ "hold0", "hold1", "hold2", "hold3", "hold4" };
@@ -86,8 +86,6 @@ namespace Terminal
                 switch(msg.common.cmd)
                 {
                     case NCMD_T_UPDATE_STATE:
-                        tms.lights  =msg.state.tstate.lights;
-
                         SetValue("credit", tms.credit, msg.state.tstate.credit);
                         tms.credit = msg.state.tstate.credit;
 
@@ -177,8 +175,18 @@ namespace Terminal
 		}
 	}
 
+	// temporary hack to avoid double press react (in fact, there is no double press)
+	static u32_t prev_call_time = 0;
+
 	void keyPress(SDLKey key)
 	{
+		if(clock()-prev_call_time<CLOCKS_PER_SEC/2)
+		{
+			return;
+		}
+
+		prev_call_time =clock();
+
     	switch(key)
         {
         	case SDLK_z:

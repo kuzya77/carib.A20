@@ -1,0 +1,233 @@
+fps     50
+mask    'drop/self/%04d.png'
+zcolor  1
+pos
+(
+		277	208
+		280	212
+		285	213
+		290	210
+		295	208
+		301	207
+		309	206
+		317	207
+		327	208
+		336	209
+		346	212
+		356	215
+		365	217
+		375	222
+		385	226
+		396	229
+		400	229
+		402	228
+		402	227
+		400	227
+		399	226
+		385	228
+		373	230
+		364	232
+		355	232
+		349	232
+		344	231
+		340	230
+		337	228
+		338	229
+		339	229
+		340	229
+		341	227
+		340	227
+		338	227
+		337	226
+		327	228
+		319	232
+		312	236
+		306	240
+		300	242
+		293	240
+		288	235
+		282	230
+		279	229
+		280	228
+		280	227
+		280	226
+		279	226
+		277	226
+		275	227
+		266	230
+		259	235
+		253	241
+		247	246
+		242	247
+		236	242
+		229	237
+		223	232
+		220	229
+		220	229
+		221	229
+		221	227
+		220	227
+		215	227
+		212	226
+		198	227
+		191	228
+		187	231
+		186	231
+		179	231
+		173	231
+		167	230
+		162	229
+		158	228
+		159	229
+		161	230
+		162	229
+		145	229
+		90	230
+		151	231
+		163	232
+		182	232
+		192	230
+		186	226
+		180	222
+		180	219
+		190	218
+		216	217
+		255	217
+		312	217
+		6	213
+		445	214
+		479	225
+		503	225
+		522	225
+		535	225
+		544	225
+		550	225
+		336	223
+		550	223
+		546	223
+		538	200
+		520	168
+		496	139
+		472	136
+		448	154
+		425	172
+		405	191
+		387	211
+		372	221
+		360	220
+		350	218
+		341	217
+		334	216
+		323	214
+		309	213
+		297	212
+		287	211
+		280	209
+		276	208
+)
+
+Event 
+{
+	frame 0
+	cmds 
+	( 
+		"AnimHide card0" 
+		"AnimHide card1"
+		"AnimHide card2"
+		"AnimHide card3"
+		"AnimHide card4"
+	)
+}
+
+Event 
+{
+	frame 15
+	cmds ( "sndPlay card" )
+}
+
+Event
+{
+	frame 20
+	cmds ("AnimShow card4 53")
+}
+
+Event 
+{
+	frame 30
+	cmds ( "sndPlay card" )
+}
+
+Event
+{
+	frame 35
+	cmds ("AnimShow card3 53")
+}
+
+Event 
+{
+	frame 45
+	cmds ( "sndPlay card" )
+}
+
+Event
+{
+	frame 49
+	cmds ("AnimShow card2 53")
+}
+
+Event 
+{
+	frame 60
+	cmds ( "sndPlay card" )
+}
+
+Event
+{
+	frame 65
+	cmds ("AnimShow card1 53")
+}
+
+Event 
+{
+	frame 75
+	cmds ( "sndPlay card" )
+}
+
+Event
+{
+	frame 80
+	cmds ("AnimShow card0 53")
+}
+
+Event 
+{
+	frame 95
+	cmds ( "sndPlay card_h" )
+}
+
+Event
+{
+	frame 97
+	cmds ("AnimHide card4")
+}
+
+Event
+{
+	frame 105
+	cmds ("gamebTrickDone")
+}
+
+Event
+{
+	frame 120
+	cmds 
+	(
+		"AnimHide drop_self"
+//		"AnimHide card0"
+//		"AnimHide card1"
+//		"AnimHide card2"
+//		"AnimHide card3"
+		"AnimHide card4"
+		"gamebTrickDone"
+	)
+}

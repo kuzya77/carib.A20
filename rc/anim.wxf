@@ -223,4 +223,229 @@ animscene "main"
 		font "default"
 		pos ( 630 530 )
 	}
+
+// Head animations -------------------------------
+	bkground2 "bkground/0000.jpg"
+
+	animation "trick"
+	{
+		layer 2000
+		second	1	// 2nd screen
+		imagelist "trick/list.wxf"
+	}
+
+	animation "turn"
+	{
+		layer 2000
+		second 1
+		imagelist "turn/list.wxf"
+	}
+
+	animation "drop_in_l"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/in_l/list.wxf"
+	}
+
+	animation "drop_in_c"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/in_c/list.wxf"
+	}
+
+	animation "drop_in_r"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/in_r/list.wxf"
+	}
+
+	animation "drop_part_l"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/part_l/list.wxf"
+	}
+
+	animation "drop_part_c"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/part_c/list.wxf"
+	}
+
+	animation "drop_part_r"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/part_r/list.wxf"
+	}
+
+	animation "drop_out_l"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/out_l/list.wxf"
+	}
+
+	animation "drop_out_c"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/out_c/list.wxf"
+	}
+
+	animation "drop_out_r"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/out_r/list.wxf"
+	}
+
+	animation "drop_self"
+	{
+		layer 2000
+		second 1
+		imagelist "drop/self/list.wxf"
+	}
+
+	animation "hide0"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/1/list.wxf"
+	}
+
+	animation "hide1"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/2/list.wxf"
+	}
+
+	animation "hide2"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/3/list.wxf"
+	}
+
+	animation "hide3"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/4/list.wxf"
+	}
+
+	animation "hide4"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/5/list.wxf"
+	}
+
+	animation "hide_all"
+	{
+		layer 2000
+		second 1
+		imagelist "hide/all/list.wxf"
+	}
+
+	animation "pointer0"
+	{
+		layer 1000
+		loop  1
+		second 1
+		imagelist "pointer/list0.wxf"
+	}
+
+	animation "pointer1"
+	{
+		layer 1000
+		loop  1
+		second 1
+		imagelist "pointer/list1.wxf"
+	}
+
+	animation "pointer2"
+	{
+		layer 1000
+		loop  1
+		second 1
+		imagelist "pointer/list2.wxf"
+	}
+
+	animation "pointer3"
+	{
+		layer 1000
+		loop  1
+		second 1
+		imagelist "pointer/list3.wxf"
+	}
+
+	animation "pointer4"
+	{
+		layer 1000
+		loop  1
+		second 1
+		imagelist "pointer/list4.wxf"
+	}
+
+	animation "dmp"
+	{
+		layer 2000
+		loop  1
+		second 1
+		imagelist "dmp/list.wxf"
+	}
+
+	animation "combolist"
+	{
+		layer 50
+		second 1
+		imagelist "tabl/list.wxf"
+		pos (0 90)
+	}
+
+	animation "card0"
+	{
+		layer 1000
+		second 1
+		imagelist "cards_h/list0.wxf"
+		pos (0	473)
+	}
+	
+	animation "card1"
+	{
+		layer 1000
+		second 1
+		imagelist "cards_h/list1.wxf"
+		pos (157 475)
+	}
+	
+	animation "card2"
+	{
+		layer 1000
+		second 1
+		imagelist "cards_h/list2.wxf"
+		pos (328 475)
+	}
+	
+	animation "card3"
+	{
+		layer 1000
+		second 1
+		imagelist "cards_h/list3.wxf"
+		pos (466 475)
+	}
+	
+	animation "card4"
+	{
+		layer 1000
+		second 1
+		imagelist "cards_h/list4.wxf"
+		pos (599 475)
+	}
 }

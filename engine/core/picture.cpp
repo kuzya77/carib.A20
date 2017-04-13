@@ -244,7 +244,7 @@ IMAGE imgLoad(const char* fname,int pf,int flags)
             {
 //                logDebug("picture::imgLoad(fname=\"%s\") imgConvert from %p",fname,p);
                 imgConvert(&p, pf);
-                logDebug("\tto %p",p);
+//                logDebug("\tto %p",p);
             }
             if(flags&IMG_SHARED)    // поместить рисунок в шару
             {

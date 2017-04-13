@@ -26,7 +26,8 @@ AnimScene::AnimScene(ParseNode* root):NamedObj(root),
                         ActiveListChanged(false),
                         DrawListChanged(false),
                         PaletteChanged(false),
-                        bkground(NULL)
+                        bkground(NULL),
+                        bkground2(NULL)
 {
     Animation* anim= NULL;
    	Font* fnt	   = NULL;
@@ -45,6 +46,18 @@ AnimScene::AnimScene(ParseNode* root):NamedObj(root),
                 logWarning("AnimScene::AnimScene(\"%s\") error: can't load bkground \"%s\"\n",name(),bk_name);
 
                 throw std::runtime_error("AnimScene: bad bkground");
+            }
+        }
+        const char* bk_name2=attrs(root,"bkground2");
+        if(bk_name2)
+        {
+            bkground2 = imgLoad(bk_name2, gfxBpp(), IMG_SHARED);
+            if(!bkground2)
+            {
+                conPrintf("AnimScene::AnimScene(\"%s\") error: can't load bkground2 \"%s\"\n",name(), bk_name2);
+                logWarning("AnimScene::AnimScene(\"%s\") error: can't load bkground2 \"%s\"\n",name(), bk_name2);
+
+                throw std::runtime_error("AnimScene: bad bkground2");
             }
         }
 
@@ -178,6 +191,12 @@ void AnimScene::draw()
     }
 
     gfxPutImage(0, 0, bkground);
+    if(bkground2)
+    {
+	    gfxSet2ndScreen(true);
+    	gfxPutImage(0, 0, bkground2);
+    	gfxSet2ndScreen(false);
+    }
 
     for(DrawList::iterator i=draw_list.begin();i!=draw_list.end();i++)
         (*i)->node->draw();

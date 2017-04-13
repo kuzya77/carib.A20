@@ -1,0 +1,5 @@
+zcolor 1
+mask 'cards_h/0_%03d.png'				// name's mask
+{
+	count 55
+}

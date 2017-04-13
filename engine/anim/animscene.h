@@ -48,6 +48,7 @@ class AnimScene:public NamedObj
     
     bool       PaletteChanged;
     IMAGE      bkground;
+    IMAGE      bkground2;						// 2nd screen bkground
 
     static bool CmpLessAnim(const AnimNode*,const AnimNode*);
     AnimNode* 	GetNode(const char* name);

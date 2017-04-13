@@ -1,0 +1,5 @@
+zcolor 1
+mask 'cards_h/3_%03d.png'
+{
+	count 55
+}
