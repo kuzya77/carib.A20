@@ -28,7 +28,8 @@ AC_CHECK_FUNCS([ftruncate memset mkdir munmap select sqrt strchr strerror strpbr
 AC_CONFIG_FILES([Makefile
                  engine/Makefile
                  game/Makefile
-                 utils/Makefile])
+                 utils/Makefile
+				 testslot/Makefile])
 
 AC_OUTPUT
 
